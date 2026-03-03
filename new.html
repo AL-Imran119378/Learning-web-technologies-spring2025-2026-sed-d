@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div {
+            height: 200px;
+            width: 200px;
+            position: relative;
+            background-color: red;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="move" id="move-btn">
+    <div id="div"> </div>
+
+
+    <script>
+        let div = document.getElementById("div");
+        let move = document.getElementById("move-btn");
+        move.addEventListener('click', () => {
+            let count = 0;
+            let interval = setInterval(() => {
+                if (count > 50) {
+                    cleanInterval(interval);
+                }
+                else {
+                    let current = window.getComputedStyle(div).left;
+                    if (current == 0) {
+                        current = "10px";
+                    }
+                    else {
+                        current = parseInt(current) + 10 + "px";
+                        div.style.left = current;
+                    }
+                }
+                count++;
+            }, 1000);
+        });
+
+    </script>
+
+
+</body>
+
+</html>
